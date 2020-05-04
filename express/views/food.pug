@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  .container(style="flex: 1; padding: 50px 0;")
+      .columns.is-multiline
+          each alim in food
+              .column.is-one-quarter
+                  .card
+                      .card-content
+                          h1.title= alim.name
+                            p=`Energy: ${alim.cal} Kcal`
+                            p=`Protein: ${alim.prot} g`
