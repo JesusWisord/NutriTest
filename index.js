@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const bodyParser = require('body-parser')
 const foodRouter = require('./routes/foodRouter')
 const authRouter = require('./routes/authRouter')
@@ -12,6 +13,7 @@ const {
 const app = express()
 
 // middlewares
+app.use(cors())
 app.use(bodyParser.json())
 
 // Rutas

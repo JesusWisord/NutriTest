@@ -4,12 +4,12 @@ const proxyquire = require('proxyquire')
 const {
   foodMock,
   foodServiceMock
-} = require('../express/utils/mocks/foodMocks')
+} = require('../utils/mocks/foodMocks')
 
-const testServer = require('../express/utils/testServer')
+const testServer = require('../utils/testServer')
 
 describe('routes - api - food', function () {
-  const route = proxyquire('../express/routes/foodRouter.js', {
+  const route = proxyquire('../routes/foodRouter.js', {
     '../services/food.js': foodServiceMock
   })
 

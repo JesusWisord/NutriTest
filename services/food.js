@@ -15,7 +15,7 @@ class FoodService {
   }
 
   async getFood ({ foodId }) {
-    const food = await this.mongoDB.findOne(this.collection, foodId)
+    const food = await this.mongoDB.getOne(this.collection, foodId)
     return food || []
   }
 
@@ -30,7 +30,9 @@ class FoodService {
   }
 
   deleteFood ({ foodId }) {
-    return Promise.resolve(foodMock[0])
+    console.log('delete')
+    const foodData = this.mongoDB.deleteOne(this.collection, foodId)
+    return foodData || []
   }
 }
 

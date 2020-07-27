@@ -13,8 +13,7 @@ const createFoodSchema = Joi.object({
     .max(1000000),
   proteinas: Joi.number()
     .min(1)
-    .max(1000000),
-  image: Joi.string().required()
+    .max(1000000)
 })
 
 const updateFoodSchema = Joi.object({

@@ -40,7 +40,7 @@ function foodApi (app) {
   router.post('/', validation(createFoodSchema), async (req, res, next) => {
     const { body: food } = req
     try {
-      const foodItem = await foodService.getFood({ food })
+      const foodItem = await foodService.createFood({ food })
       res.status(200).json({
         data: foodItem,
         message: 'Alimento creado'
@@ -51,7 +51,6 @@ function foodApi (app) {
   })
 
   router.put('/:foodId',
-    passport.authenticate('jwt', { session: false }),
     validation(foodIdSchema, 'params'),
     validation(updateFoodSchema),
     async (req, res, next) => {
@@ -71,7 +70,7 @@ function foodApi (app) {
   router.delete('/:foodId', async (req, res, next) => {
     const { foodId } = req.params
     try {
-      const foodItem = await foodService.updateFood({ foodId })
+      const foodItem = await foodService.deleteFood({ foodId })
       res.status(200).json({
         data: foodItem,
         message: 'Alimento eliminado'
