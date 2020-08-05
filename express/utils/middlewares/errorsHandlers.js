@@ -1,6 +1,6 @@
 const Sentry = require('@sentry/node')
 const boom = require('@hapi/boom')
-const { config } = require('../../config')
+const { config } = require('../../../config')
 const isRequestAjaxOrApi = require('../isRequestAjaxOrApi')
 
 Sentry.init({ dsn: `https://${config.sentryDns}.ingest.sentry.io/${config.sentryId}` });

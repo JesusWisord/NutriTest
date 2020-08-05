@@ -4,7 +4,7 @@ const boom = require('@hapi/boom')
 const jwt = require('jsonwebtoken')
 const api = express.Router()
 
-const { config } = require('../config/')
+const { config } = require('../../config')
 
 // Basic strategy
 require('../utils/auth/strategies/basic')

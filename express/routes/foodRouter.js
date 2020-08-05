@@ -41,7 +41,7 @@ function foodApi (app) {
     const { body: food } = req
     try {
       const foodItem = await foodService.createFood({ food })
-      res.status(200).json({
+      res.status(201).json({
         data: foodItem,
         message: 'Alimento creado'
       })

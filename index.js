@@ -1,48 +1,26 @@
-const express = require('express')
-const cors = require('cors')
-const bodyParser = require('body-parser')
-const foodRouter = require('./routes/foodRouter')
-const authRouter = require('./routes/authRouter')
-const {
-  logErrors,
-  errorHandler,
-  clientErrorHandler,
-  wrapErrors
-} = require('./utils/middlewares/errorsHandlers')
+const app = require('./express')
+const sequelize = require('./sequelizer')
+const { config } = require('./config')
+const PORT = config.port
 
-const app = express()
+async function assertDatabaseConnectionOk () {
+  console.log('Checking database connection...')
+  try {
+    await sequelize.authenticate()
+    console.log('Database connection OK!')
+  } catch (error) {
+    console.log('Unable to connect to the database:')
+    console.log(error.message)
+    process.exit(1)
+  }
+}
 
-// middlewares
-app.use(cors())
-app.use(bodyParser.json())
+async function init () {
+  await assertDatabaseConnectionOk()
+  console.log(`Starting Sequelize + Express example on port ${PORT}...`)
+  app.listen(PORT, () => {
+    console.log(`Express server started on port ${PORT}. Try some routes, such as '/api/users'.`)
+  })
+}
 
-// Rutas
-foodRouter(app)
-app.use('/auth', authRouter)
-app.get('/', function (req, res, next) {
-  res.send({ hello: 'world' })
-})
-
-// Cuando se intentan todas las rutas se busca el 404. Si es api se lanza error de boom
-// app.use(function (req, res, next) {
-//   if (isRequestAjaxOrApi(req)) {
-//     const {
-//       output: { statusCode, payload }
-//     } = boom.notFound()
-
-//     res.status(statusCode).json(payload)
-//   }
-
-//   res.status(404).render("404")
-// })
-
-// error handlers
-app.use(logErrors)
-app.use(wrapErrors)
-app.use(clientErrorHandler)
-app.use(errorHandler)
-
-// Server
-const server = app.listen(8001, function () {
-  console.log(`Listening http://localhost:${server.address().port}`)
-})
+init()

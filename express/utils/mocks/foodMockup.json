@@ -1,0 +1,14 @@
+{
+  "nombre": "platano crudo",
+  "id_usda": 173944,
+  "nutrientes": [
+    {"id": 1, "cantidad": 74.91},
+    {"id": 2, "cantidad": 89},
+    {"id": 3, "cantidad": 371},
+    {"id": 4, "cantidad": 1.09},
+    {"id": 5, "cantidad": 2.3},
+    {"id": 6, "cantidad": 4.5},
+    {"id": 7, "cantidad": 9.76},
+    {"id": 8, "cantidad": 2}
+  ]
+}
