@@ -1,5 +1,4 @@
 const MongoLib = require('../lib/mongo')
-const foodMock = require('../utils/mocks/foodMocks')
 
 class FoodService {
   constructor () {
