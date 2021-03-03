@@ -46,7 +46,7 @@
     "passport-jwt": "^4.0.0",
     "pg": "^8.3.0",
     "pg-hstore": "^2.3.3",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "sequelizer": "^1.1.4"
   },
   "devDependencies": {
